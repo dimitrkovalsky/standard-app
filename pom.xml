@@ -9,7 +9,27 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
     <dependencies>
+        <!--Rest-->
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-jaxrs</artifactId>
+            <version>3.0.4.Final</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>jaxrs-api</artifactId>
+            <version>3.0.4.Final</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>net.sf.scannotation</groupId>
+            <artifactId>scannotation</artifactId>
+            <version>1.0.2</version>
+            <scope>provided</scope>
+        </dependency>
 
+        <!--Rest End-->
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-api</artifactId>

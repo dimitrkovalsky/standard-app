@@ -1,4 +1,4 @@
-package exception;
+package standard.errors;
 
 /**
  * Created by Dmytro_Kovalskyi on 23.07.2014.

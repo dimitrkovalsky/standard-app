@@ -1,7 +1,7 @@
-package dao;
+package standard.dao;
 
-import exception.DaoException;
-import models.Book;
+import standard.errors.DaoException;
+import standard.models.Book;
 
 import java.util.List;
 

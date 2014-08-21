@@ -17,7 +17,7 @@
  *
  * GPL Classpath Exception:
  * Oracle designates this particular file as subject to the "Classpath"
- * exception as provided by Oracle in the GPL Version 2 section of the License
+ * standard.exception as provided by Oracle in the GPL Version 2 section of the License
  * file that accompanied this code.
  *
  * Modifications:
@@ -37,47 +37,31 @@
  * only if the new code is made subject to such option by the copyright
  * holder.
  */
-package rest;
 
-import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
+package standard.rest;
+
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * @author Arun Gupta
  */
-@Path("/fruit")
-public class MyResource {
+public class Database {
+    private static final List<String> list = Arrays.asList("Apple, Orange");
 
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public String get() {
-        System.out.println("GET");
-        return Database.getAll();
+    static public String getAll() {
+        return list.toString();
     }
-
-    @GET
-    @Path("{name}")
-    public String get(@PathParam("name") String payload) {
-        System.out.println("GET");
-        return Database.get(payload);
+    
+    static public String get(String fruit) {
+        return list.contains(fruit) ? fruit : "";
     }
-
-    @POST
-    public void post(String payload) {
-        System.out.println("POST");
-        Database.add(payload);
+    
+    static public void add(String fruit) {
+        list.add(fruit);
     }
-
-    @PUT
-    public void put(String payload) {
-        System.out.println("PUT");
-        Database.add(payload);
-    }
-
-    @DELETE
-    @Path("{name}")
-    public void delete(@PathParam("name") String payload) {
-        System.out.println("DELETE");
-        Database.delete(payload);
+    
+    static public void delete(String fruit) {
+        list.remove(fruit);
     }
 }

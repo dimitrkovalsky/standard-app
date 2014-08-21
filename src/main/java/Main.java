@@ -1,22 +1,23 @@
-import commons.DaoFactory;
-import dao.IBookDao;
-import exception.DaoException;
-import models.Book;
+import standard.commons.DaoFactory;
+import standard.dao.IStudentDao;
+import standard.errors.DaoException;
+import standard.models.Student;
 
 
 public class Main {
-
     public static void main(String[] args) throws DaoException {
-        Book book = new Book();
-        book.setId(1L);
-        //Book book2 = new Book("Some fdata", "Interst book", 12.5F, "1-844223-455-2", 88, false);
-        IBookDao dao = DaoFactory.getBookDao();
-        for (Book b : dao.findAll())
-            System.out.println(b);
-//        for(Book b : dao.findAll())
-//            System.out.println(b);
-        //dao.update(book);
-        //  dao.insert(book2);
+        fillStudents();
+    }
 
+    public static void fillStudents() throws DaoException {
+        IStudentDao dao = DaoFactory.getStudentDao();
+        for (long i = 1; i <= 10; i++) {
+            Student student = new Student();
+            student.setId(i);
+            student.setFirstName("Name #" + i);
+            student.setLastName("Surname for " + i);
+            student.setDepartment("KSU");
+            dao.insert(student);
+        }
     }
 }

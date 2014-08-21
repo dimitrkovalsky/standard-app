@@ -6,7 +6,8 @@
 
     <persistence-unit name="chapter04PU" transaction-type="RESOURCE_LOCAL">
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-        <class>models.Book</class>
+        <class>standard.models.Book</class>
+        <class>standard.models.Student</class>
         <properties>
             <property name="eclipselink.ddl-generation" value="create-tables"/>
             <property name="eclipselink.create-ddl-jdbc-file-name" value="createDDL_ddlGeneration.jdbc"/>

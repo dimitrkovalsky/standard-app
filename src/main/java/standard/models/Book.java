@@ -1,4 +1,4 @@
-package models;
+package standard.models;
 
 import javax.persistence.*;
 
@@ -94,7 +94,7 @@ public class Book {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
-        sb.append("models.Book");
+        sb.append("standard.models.Book");
         sb.append("{id=").append(id);
         sb.append(", title='").append(title).append('\'');
         sb.append(", price=").append(price);

@@ -1,7 +1,6 @@
-package commons;
+package standard.commons;
 
-import dao.BookDao;
-import dao.IBookDao;
+import standard.dao.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
@@ -21,5 +20,13 @@ public class DaoFactory {
 
     public static IBookDao getBookDao() {
         return new BookDao(em);
+    }
+
+    public static IUserDao getUserDao() {
+        return new UserDao(em);
+    }
+
+    public static IStudentDao getStudentDao() {
+        return new StudentDao(em);
     }
 }
