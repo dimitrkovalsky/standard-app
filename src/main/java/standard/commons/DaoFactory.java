@@ -29,4 +29,8 @@ public class DaoFactory {
     public static IStudentDao getStudentDao() {
         return new StudentDao(em);
     }
+
+    public static IUserRoleDao getUserRoleDao() {
+        return new UserRoleDao(em);
+    }
 }

@@ -85,4 +85,6 @@ public class SecurityInterceptor implements ContainerRequestFilter {
         return isAllowed;
     }
 
+
+
 }
