@@ -6,6 +6,7 @@ import standard.models.User;
 
 import javax.annotation.security.PermitAll;
 import javax.annotation.security.RolesAllowed;
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
@@ -16,18 +17,24 @@ import javax.ws.rs.core.Request;
  */
 @Path("/user-service")
 public class UserService {
+    @Context
+    private HttpServletRequest httpRequest;
+
     @PermitAll
     @GET
     @Path("/users/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public User getUserById(@PathParam("id") Long id, @Context Request req)  {
+    public User getUserById(@PathParam("id") Long id, @Context Request req) {
         System.out.println("getUserById : " + id);
         try {
+            System.out.println("Session : " + httpRequest.getSession().getId());
             return DaoFactory.getUserDao().findById(id);
         } catch (DaoException e) {
-           return null;
+            return null;
         }
     }
+
+
 
     @RolesAllowed("ADMIN")
     @PUT

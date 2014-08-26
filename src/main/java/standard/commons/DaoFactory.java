@@ -30,7 +30,7 @@ public class DaoFactory {
         return new StudentDao(em);
     }
 
-    public static IUserRoleDao getUserRoleDao() {
-        return new UserRoleDao(em);
+    public static IAccountDao getAccountDao() {
+        return new AccountDao(em);
     }
 }

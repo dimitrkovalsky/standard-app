@@ -16,10 +16,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.*;
 
-/**
- * This interceptor verify the access permissions for a user
- * based on username and passowrd provided in request
- */
+
 @Provider
 public class SecurityInterceptor implements ContainerRequestFilter {
     private static final String AUTHORIZATION_PROPERTY = "Authorization";

@@ -1,20 +1,20 @@
 package standard.dao;
 
 import standard.errors.DaoException;
-import standard.models.UserRole;
+import standard.models.Account;
 
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaQuery;
 import java.util.List;
 
-public class UserRoleDao implements IUserRoleDao {
+public class AccountDao implements IAccountDao {
     private EntityManager entityManager = null;
 
-    public UserRoleDao(EntityManager em){
+    public AccountDao(EntityManager em){
         this.entityManager = em;
     }
 
-    public void insert(UserRole entity) throws DaoException {
+    public void insert(Account entity) throws DaoException {
         try {
             entityManager.getTransaction().begin();
             entityManager.persist(entity);
@@ -24,33 +24,41 @@ public class UserRoleDao implements IUserRoleDao {
         }
     }
 
-    public UserRole find(UserRole entity) throws DaoException {
+    public Account find(Account entity) throws DaoException {
         try {
-            return entityManager.find(UserRole.class, entity.getId());
+            return entityManager.find(Account.class, entity.getId());
         } catch(Exception e){
             throw new DaoException(e);
         }
     }
 
-    public List<UserRole> findAll() throws DaoException {
+    public Account findByLogin(String login) throws DaoException {
         try {
-            CriteriaQuery<UserRole> criteria = entityManager.getCriteriaBuilder().createQuery(UserRole.class);
-            criteria.select(criteria.from(UserRole.class));
+            return entityManager.find(Account.class, login);
+        } catch(Exception e){
+            throw new DaoException(e);
+        }
+    }
+
+    public List<Account> findAll() throws DaoException {
+        try {
+            CriteriaQuery<Account> criteria = entityManager.getCriteriaBuilder().createQuery(Account.class);
+            criteria.select(criteria.from(Account.class));
             return entityManager.createQuery(criteria).getResultList();
         } catch(Exception e){
             throw new DaoException(e);
         }
     }
 
-    public UserRole findById(Long id) throws DaoException {
+    public Account findById(Long id) throws DaoException {
         try {
-            return entityManager.find(UserRole.class, id);
+            return entityManager.find(Account.class, id);
         } catch(Exception e){
             throw new DaoException(e);
         }
     }
 
-    public void update(UserRole entity) throws DaoException {
+    public void update(Account entity) throws DaoException {
         try {
             entityManager.getTransaction().begin();
             entityManager.merge(entity);
@@ -60,7 +68,7 @@ public class UserRoleDao implements IUserRoleDao {
         }
     }
 
-    public void delete(UserRole entity) throws DaoException {
+    public void delete(Account entity) throws DaoException {
         try {
             entityManager.getTransaction().begin();
             entityManager.remove(entity);
