@@ -1,16 +1,15 @@
 package standard.rest;
 
-import standard.beans.AuthenticationBean;
 import standard.beans.IAuthenticationBean;
-import standard.dao.IAccountDao;
 import standard.errors.DaoException;
 import standard.models.Account;
 
 import javax.annotation.security.PermitAll;
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.constraints.NotNull;
 import javax.ws.rs.FormParam;
-import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Context;
@@ -21,6 +20,7 @@ import javax.ws.rs.core.Context;
  * Time: 13:38
  */
 @Path("/auth")
+@Stateless
 public class AuthService {
     @Context
     private HttpServletRequest httpRequest;
@@ -30,7 +30,7 @@ public class AuthService {
 
     @PermitAll
     @POST
-    public String auth(@FormParam("login") String login, @FormParam("password") String password) throws DaoException {
+    public String auth(@NotNull @FormParam("login") String login, @NotNull @FormParam("password") String password) throws DaoException {
         System.out.println("Session : " + httpRequest.getSession().getId());
         Account account = authenticationBean.authenticate(login, password);
         if (account == null)

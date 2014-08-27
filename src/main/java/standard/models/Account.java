@@ -3,7 +3,7 @@ package standard.models;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-@Entity(name = "userRole")
+@Entity(name = "accounts")
 public class Account {
     @Id
     private Long id = 0L;
@@ -41,5 +41,15 @@ public class Account {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return "Account{" +
+                "id=" + id +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", role='" + role + '\'' +
+                '}';
     }
 }
