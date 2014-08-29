@@ -3,8 +3,9 @@ package standard.rest;
 import standard.commons.DaoFactory;
 import standard.errors.DaoException;
 import standard.models.Student;
+import standard.security.Roles;
 
-import javax.annotation.security.PermitAll;
+import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
@@ -15,7 +16,7 @@ import java.util.List;
 @Path("/students")
 public class StudentResource {
     @GET
-    @PermitAll
+    @RolesAllowed(value = {Roles.STUDENT, Roles.LECTURER})
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/list")
     public List<Student> list() throws DaoException {
@@ -24,8 +25,9 @@ public class StudentResource {
     }
 
     @POST
-    public String add(@FormParam("token") String token) {
-        System.out.println("Token : " + token);
-        return "Added by " + token;
+    @RolesAllowed(value = {Roles.LECTURER})
+    public String add(@FormParam("data") String data) {
+        System.out.println("Data : " + data);
+        return "Added by " + data;
     }
 }
