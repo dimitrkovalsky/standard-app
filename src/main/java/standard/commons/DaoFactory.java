@@ -33,4 +33,12 @@ public class DaoFactory {
     public static IAccountDao getAccountDao() {
         return new AccountDao(em);
     }
+
+    public static IDepartmentDao getDepartmentDao() {
+        return new DepartmentDao(em);
+    }
+
+    public static IInstituteDao getInstituteDao() {
+        return new InstituteDao(em);
+    }
 }

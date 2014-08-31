@@ -1,6 +1,8 @@
 package standard.beans;
 
+import standard.errors.ApplicationException;
 import standard.errors.DaoException;
+import standard.models.Account;
 
 import javax.ejb.Stateless;
 
@@ -9,5 +11,5 @@ import javax.ejb.Stateless;
  */
 @Stateless
 public interface IAuthenticationBean {
-    standard.models.Account authenticate(String login, String password) throws DaoException;
+    Account authenticate(String login, String password) throws ApplicationException;
 }

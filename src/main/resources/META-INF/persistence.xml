@@ -9,6 +9,8 @@
         <class>standard.models.Book</class>
         <class>standard.models.Student</class>
         <class>standard.models.Account</class>
+        <class>standard.models.Department</class>
+        <class>standard.models.Institute</class>
         <properties>
             <property name="eclipselink.ddl-generation" value="create-tables"/>
             <property name="eclipselink.create-ddl-jdbc-file-name" value="createDDL_ddlGeneration.jdbc"/>

@@ -1,8 +1,12 @@
 import standard.commons.DaoFactory;
 import standard.dao.IAccountDao;
+import standard.dao.IDepartmentDao;
+import standard.dao.IInstituteDao;
 import standard.dao.IStudentDao;
 import standard.errors.DaoException;
 import standard.models.Account;
+import standard.models.Department;
+import standard.models.Institute;
 import standard.models.Student;
 import standard.security.Encryptor;
 import standard.security.Roles;
@@ -10,7 +14,28 @@ import standard.security.Roles;
 
 public class Main {
     public static void main(String[] args) throws DaoException {
-        System.out.println(DaoFactory.getAccountDao().findByLogin("acc_1"));
+        fillDepartments();
+        //System.out.println(DaoFactory.getAccountDao().findByLogin("acc_1"));
+    }
+
+    public static void fillInstitutes() throws DaoException {
+        IInstituteDao dao = DaoFactory.getInstituteDao();
+        for (long i = 1; i <= 5; i++) {
+            Institute institute = new Institute();
+            institute.setName("Institute_" + i);
+            institute.setHead(i);
+            dao.insert(institute);
+        }
+    }
+
+    public static void fillDepartments() throws DaoException {
+        IDepartmentDao dao = DaoFactory.getDepartmentDao();
+        for (long i = 1; i <= 5; i++) {
+            Department department = new Department();
+            department.setName("Dep_" + i);
+            department.setInstitute(1L);
+            dao.insert(department);
+        }
     }
 
     public static void fillStudents() throws DaoException {

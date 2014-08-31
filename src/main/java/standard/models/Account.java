@@ -1,11 +1,15 @@
 package standard.models;
 
+import javax.annotation.Generated;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity(name = "accounts")
 public class Account {
     @Id
+    @GeneratedValue
     private Long id = 0L;
     private String login;
     private String password;

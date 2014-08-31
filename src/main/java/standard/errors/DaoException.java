@@ -3,7 +3,7 @@ package standard.errors;
 /**
  * Created by Dmytro_Kovalskyi on 23.07.2014.
  */
-public class DaoException extends Exception
+public class DaoException extends ApplicationException
 {
     public DaoException(String message) {
         super(message);
