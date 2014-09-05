@@ -1,9 +1,6 @@
 package standard.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * User: dimitr
@@ -13,10 +10,13 @@ import javax.persistence.Id;
 @Entity(name = "department")
 public class Department {
     @Id
-    @GeneratedValue
+    // TODO: add  (strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id = 0L;
     private String name;
-    private Long institute;
+    // TODO: Change to  Column(name = "institute_id")
+    @Column(name = "institute_id")
+    private Long instituteId;
 
     public Long getId() {
         return id;
@@ -34,11 +34,11 @@ public class Department {
         this.name = name;
     }
 
-    public Long getInstitute() {
-        return institute;
+    public Long getInstituteId() {
+        return instituteId;
     }
 
-    public void setInstitute(Long institute) {
-        this.institute = institute;
+    public void setInstituteId(Long institute) {
+        this.instituteId = institute;
     }
 }

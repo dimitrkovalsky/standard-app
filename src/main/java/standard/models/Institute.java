@@ -1,15 +1,14 @@
 package standard.models;
 
-import java.lang.Long;
-import java.lang.String;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity(name = "institute")
 public class Institute {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id = 0L;
     private String name = "";
     private Long head = 0L;

@@ -1,7 +1,6 @@
 package standard.dao;
 
 import standard.errors.DaoException;
-import standard.models.Account;
 import standard.models.Department;
 
 import java.util.List;
@@ -25,4 +24,6 @@ public interface IDepartmentDao {
     public void update(Department entity) throws DaoException;
 
     public void delete(Department entity) throws DaoException;
+
+    public List<Department> findByInstitute(Long id) throws DaoException;
 }

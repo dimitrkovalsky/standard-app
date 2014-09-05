@@ -13,9 +13,13 @@ import standard.security.Roles;
 
 
 public class Main {
-    public static void main(String[] args) throws DaoException {
-        fillDepartments();
-        //System.out.println(DaoFactory.getAccountDao().findByLogin("acc_1"));
+    public static void main(String[] args) throws Exception {
+        IDepartmentDao dao = DaoFactory.getDepartmentDao();
+        Department department = new Department();
+        department.setId(6L);
+        dao.delete(department);
+       // fillInstitutes();
+       // System.out.println(DaoFactory.getDepartmentDao().findByInstitute(1L));
     }
 
     public static void fillInstitutes() throws DaoException {
@@ -33,7 +37,7 @@ public class Main {
         for (long i = 1; i <= 5; i++) {
             Department department = new Department();
             department.setName("Dep_" + i);
-            department.setInstitute(1L);
+            department.setInstituteId(1L);
             dao.insert(department);
         }
     }

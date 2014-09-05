@@ -10,18 +10,18 @@ import javax.annotation.security.RolesAllowed;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.ws.rs.container.ContainerRequestContext;
-import javax.ws.rs.container.ContainerRequestFilter;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MultivaluedMap;
-import javax.ws.rs.ext.Provider;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
+//
+//@Provider
+//public class AuthFilter implements ContainerRequestFilter {
 
-@Provider
-public class AuthFilter implements ContainerRequestFilter {
+public class AuthFilter {
     @Context
     private HttpServletRequest httpRequest;
     public static final String LOGIN = "login";
@@ -30,7 +30,6 @@ public class AuthFilter implements ContainerRequestFilter {
     private static final ServerResponse ACCESS_FORBIDDEN = new ServerResponse("Nobody can access this resource", 403, new Headers<Object>());
     private static final ServerResponse SERVER_ERROR = new ServerResponse("INTERNAL SERVER ERROR", 500, new Headers<Object>());
 
-    @Override
     public void filter(ContainerRequestContext requestContext) {
 
         ResourceMethodInvoker methodInvoker = (ResourceMethodInvoker) requestContext.getProperty("org.jboss.resteasy.core.ResourceMethodInvoker");

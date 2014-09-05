@@ -1,36 +1,23 @@
 package standard.beans;
 
-import standard.commons.DaoFactory;
-import standard.dao.IDepartmentDao;
 import standard.errors.ApplicationException;
 import standard.models.Department;
 
 import java.util.List;
 
 /**
- * User: dimitr
- * Date: 31.08.2014
- * Time: 13:33
+ * Created by Dmytro_Kovalskyi on 01.09.2014.
  */
-public class IDepartmentBean {
-    public List<Department> getAllDepartments() throws ApplicationException {
-       return DaoFactory.getDepartmentDao().findAll();
-    }
+public interface IDepartmentBean {
+    public Department getDepartment(Long id) throws ApplicationException;
 
-    public void addDepartment(Department department) throws ApplicationException {
-        IDepartmentDao dao = DaoFactory.getDepartmentDao();
-        dao.insert(department);
-    }
+    public List<Department> getAllDepartments() throws ApplicationException;
 
-    public void updateDepartment(Department department) throws ApplicationException {
-        IDepartmentDao dao = DaoFactory.getDepartmentDao();
-        dao.update(department);
-    }
+    public void addDepartment(Department department) throws ApplicationException;
 
-    public void deleteDepartment(Long id) throws ApplicationException {
-        IDepartmentDao dao = DaoFactory.getDepartmentDao();
-        Department department = new Department();
-        department.setId(id);
-        dao.delete(department);
-    }
+    public void updateDepartment(Department department) throws ApplicationException;
+
+    public void deleteDepartment(Long id) throws ApplicationException;
+
+    public List<Department> getAllDepartmentsByInstitute(Long id) throws ApplicationException;
 }

@@ -1,7 +1,6 @@
 package standard.dao;
 
 import standard.errors.DaoException;
-import standard.models.Account;
 import standard.models.Department;
 
 import javax.persistence.EntityManager;
@@ -52,6 +51,19 @@ public class DepartmentDao implements IDepartmentDao {
         }
     }
 
+    public List<Department> findByInstitute(Long id) throws DaoException {
+        try {
+            CriteriaBuilder builder = entityManager.getCriteriaBuilder();
+            CriteriaQuery<Department> criteria = builder.createQuery(Department.class);
+            Root<Department> root = criteria.from(Department.class);
+            criteria.select(root).where(builder.equal(root.get("instituteId"), id));
+            return entityManager.createQuery(criteria).getResultList();
+        } catch (Exception e) {
+            throw new DaoException(e);
+        }
+    }
+
+
     public List<Department> findAll() throws DaoException {
         try {
             CriteriaQuery<Department> criteria = entityManager.getCriteriaBuilder().createQuery(Department.class);
@@ -80,10 +92,12 @@ public class DepartmentDao implements IDepartmentDao {
         }
     }
 
+    // TODO: Change delete method generation
     public void delete(Department entity) throws DaoException {
         try {
             entityManager.getTransaction().begin();
-            entityManager.remove(entity);
+            Department toBeRemoved = entityManager.merge(entity);
+            entityManager.remove(toBeRemoved);
             entityManager.getTransaction().commit();
         } catch (Exception e) {
             throw new DaoException(e);
