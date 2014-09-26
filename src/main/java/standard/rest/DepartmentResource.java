@@ -9,7 +9,6 @@ import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
-
 /**
  * Created by Dmytro_Kovalskyi on 01.09.2014.
  */

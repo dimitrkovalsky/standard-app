@@ -3,11 +3,13 @@ package standard.beans;
 import standard.errors.ApplicationException;
 import standard.models.Department;
 
+import javax.ejb.Local;
 import java.util.List;
 
 /**
  * Created by Dmytro_Kovalskyi on 01.09.2014.
  */
+@Local
 public interface IDepartmentBean {
     public Department getDepartment(Long id) throws ApplicationException;
 
